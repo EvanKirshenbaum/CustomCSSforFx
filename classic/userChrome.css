@@ -109,13 +109,13 @@
 /************************************************************************************************/
 
 /* navigation toolbar buttons appearance - only use one at a time *******************************/
-@import url(./css/buttons/buttons_on_navbar_classic_appearance.css); /**/
+/* @import url(./css/buttons/buttons_on_navbar_classic_appearance.css); /**/
 /* @import url(./css/buttons/buttons_on_navbar_classic_appearance_v2.css); /**/
 /* @import url(./css/buttons/buttons_on_navbar_glass_appearance.css); /**/
 /* @import url(./css/buttons/buttons_on_navbar_osx_appearance.css); /**/
 
 /* navigation toolbar buttons - button roundness (edit file to set different roundness) *********/
-/* @import url(./css/buttons/buttons_on_navbar_button_roundness.css); /**/
+@import url(./css/buttons/buttons_on_navbar_button_roundness.css); /**/
 
 /* squared buttons (rectangular shape) **********************************************************/
 /* @import url(./css/buttons/buttons_on_navbar_squared_buttons.css); /**/
@@ -274,7 +274,7 @@
 /* - TABS BELOW TITLEBAR (Fx56-like) ************************************************************/
 /* @import url(./css/tabs/tabs_below_titlebar_above_navigation_toolbar.css); /**/
 /* - TABS BELOW NAVIGATION AND BOOKMARKS TOOLBARS (tabs not on top) *****************************/
-/* @import url(./css/tabs/tabs_below_navigation_toolbar.css); /**/ 									/* <-- tabs not on top */
+@import url(./css/tabs/tabs_below_navigation_toolbar.css); /**/ 									/* <-- tabs not on top */
 /* @import url(./css/tabs/tabs_below_navigation_toolbar_macOS_fix.css); /**/ 						/* <-- macOS fix */
 /* - TABS BELOW MAIN CONTENT (tabs on bottom) - EXPERIMENTAL ************************************/
 /* [!] SUPPORT THREAD: https://github.com/aris-t2/customcssforfx/issues/33 **********************/
@@ -305,7 +305,7 @@
 /* [!] some internal pages only show default browser title **************************************/
 /* [!] might not always work correctly **********************************************************/
 /* @import url(./css/tabs/tab_title_in_firefox_titlebar.css); /**/
-/* @import url(./css/tabs/tab_title_in_firefox_titlebar_centered.css); /**/
+@import url(./css/tabs/tab_title_in_firefox_titlebar_centered.css); /**/
 
 /* restore empty/missing tab favicon - only use one at a time ***********************************/
 @import url(./css/tabs/missing_tab_favicon_restored_default.css); /**/
@@ -343,9 +343,9 @@
 /* @import url(./css/tabs/default_tabs_tab_background_appearance.css); /**/
 /* @import url(./css/tabs/default_tabs_custom_colors.css); /**/
 /* tab line settings - only use one at a time ***************************************************/
-/* @import url(./css/tabs/default_tabs_no_tab_line.css); /**/
+@import url(./css/tabs/default_tabs_no_tab_line.css); /**/
 /* @import url(./css/tabs/default_tabs_static_tab_line.css); /**/
-/* @import url(./css/tabs/default_tabs_tab_line_purple_in_private_mode.css); /**/
+/*@import url(./css/tabs/default_tabs_tab_line_purple_in_private_mode.css); /**/
 
 /* other tab settings ***************************************************************************/
 @import url(./css/tabs/tab_icon_colors.css); /**/
@@ -362,7 +362,7 @@
 /* GENERAL UI ***********************************************************************************/
 /************************************************************************************************/
 
-@import url(./css/generalui/private_mode_indicator_hidden.css); /**/
+/*@import url(./css/generalui/private_mode_indicator_hidden.css); /**/
 @import url(./css/generalui/bookmark_icons_colorized.css); /**/
 /* @import url(./css/generalui/bookmarks_smaller_more_bookmarks_icon.css); /**/
 /* @import url(./css/generalui/send_to_device_menuitems_hidden.css); /**/
@@ -551,9 +551,9 @@
 		 
 /* [!] 'Classic popup with two lined results' removes 'oneoff' searches at popups bottom ********/
 /* popup content order/appearance - only use one at a time **************************************/
-/* @import url(./css/locationbar/ac_popup_classic_with_two_lines.css); /**/
+@import url(./css/locationbar/ac_popup_classic_with_two_lines.css); /**/
 /* @import url(./css/locationbar/ac_popup_title_and_url_50percent_width.css); /**/
-@import url(./css/locationbar/ac_popup_url_and_title_50percent_width.css); /**/
+/* @import url(./css/locationbar/ac_popup_url_and_title_50percent_width.css); /**/
 /* @import url(./css/locationbar/ac_popup_item_title_hidden.css); /**/
 /* @import url(./css/locationbar/ac_popup_item_title_visible_on_hover_only.css); /**/
  
@@ -576,7 +576,7 @@
 /************************************************************************************************/
 /************************************************************************************************/
 /* Create a new file "my_userChrome.css" and add own/custom code to it. *************************/
-/* @import url(./my_userChrome.css); /**/
+@import url(./my_userChrome.css); /**/
 /************************************************************************************************/
 /************************************************************************************************/
 /************************************************************************************************/

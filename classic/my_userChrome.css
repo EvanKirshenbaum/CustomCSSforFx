@@ -1,0 +1,5 @@
+/* hide label for bookmarks */
+#PlacesToolbarItems > .bookmark-item:not([container]) .toolbarbutton-text{ display:none !important; }
+
+/* hide icon for folders */
+#PlacesToolbarItems > .bookmark-item[container] .toolbarbutton-icon { display:none !important; }
