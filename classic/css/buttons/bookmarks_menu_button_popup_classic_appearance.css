@@ -4,8 +4,8 @@
 
 
 /* bookmarks menu button popup*/
-#BMB_bookmarksPopup  #BMB_bookmarksShowAll,
-#BMB_bookmarksPopup  .panel-arrowbox {
+#BMB_bookmarksPopup #BMB_bookmarksShowAll,
+#BMB_bookmarksPopup .panel-arrowbox {
   display: none !important;
 }
 
@@ -37,6 +37,11 @@
 #BMB_bookmarksPopup menupopup {
   background: -moz-Dialog !important;
   color: -moz-DialogText !important;
+}
+
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme-brighttext #BMB_bookmarksPopup *,
+#main-window:not([style*='--lwt-header-image']):-moz-lwtheme-brighttext #BMB_bookmarksPopup menupopup * {
+  color: black !important;
 }
 
 #BMB_bookmarksPopup menupopup > hbox {

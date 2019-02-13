@@ -165,15 +165,15 @@
 	}
 
 	/* buttons / menulists */
-	button:not(.button-link):not(.close-icon),
-	menulist{
+	button:not(.button-link):not(.close-icon):not(#contentBlockingToggle),
+	menulist {
 	  min-height: unset !important;
 	  height: unset !important;
 	  background-image: linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(255,255,255,0.20),rgba(0,0,0,0.01)) !important;
 	}
 	
-	button:not(.button-link):not(.close-icon){
-	  padding:0px !important;
+	button:not(.button-link):not(.close-icon):not(#contentBlockingToggle) {
+	  padding: 0px !important;
 	}
 	menulist{
 	  padding:2px !important;
@@ -247,12 +247,7 @@
 		  height: 14px !important;
 		  margin: 0 !important;
 		}
-		
-		checkbox label,
-		radio label {
-		  -moz-margin-start: -10px !important;
-		}
-		
+	
 		#homeContentsGroup checkbox label {
 		  -moz-margin-start: 2px !important;
 		}
@@ -273,11 +268,6 @@
 		  margin-bottom: 2px !important;
 		}
 		
-		checkbox label,
-		radio label {
-		  -moz-margin-start: -4px !important;
-		}
-		
 		#homeContentsGroup checkbox label {
 		  -moz-margin-start: 8px !important;
 		}
@@ -291,12 +281,7 @@
 		  width: 10px !important;
 		  height: 10px !important;
 		}
-		
-		checkbox label,
-		radio label {
-		  -moz-margin-start: -4px !important;
-		}
-		
+
 		#homeContentsGroup checkbox label {
 		  -moz-margin-start: 6px !important;
 		}
@@ -313,12 +298,7 @@
 		radio image {
 		  width: 10px !important;
 		}
-		
-		checkbox label,
-		radio label {
-		  -moz-margin-start: -4px !important;
-		}
-		
+
 		#homeContentsGroup checkbox label {
 		  -moz-margin-start: 6px !important;
 		}
@@ -470,11 +450,6 @@
 	  margin: 0 !important;
 	}
 	
-	*[subdialog="true"] checkbox label,
-	*[subdialog="true"] radio label {
-	  -moz-margin-start: -10px !important;
-	}
-	
 	*[subdialog="true"] radio *{
 	  outline: unset !important;
 	}
@@ -489,11 +464,6 @@
 		  margin-top: 2px !important;
 		  margin-bottom: 2px !important;
 		}
-		
-		*[subdialog="true"] checkbox label,
-		*[subdialog="true"] radio label {
-		  -moz-margin-start: -4px !important;
-		}
 
 	}
 }
@@ -503,11 +473,6 @@
 	*[subdialog="true"] radio image {
 	  width: 10px !important;
 	  height: 10px !important;
-	}
-	
-	*[subdialog="true"] checkbox label,
-	*[subdialog="true"] radio label {
-	  -moz-margin-start: -4px !important;
 	}
 	
 	#FontsDialog checkbox image {
@@ -532,11 +497,6 @@
 	*[subdialog="true"] radio image {
 	  width: 10px !important;
 	}
-	
-	*[subdialog="true"] checkbox label,
-	*[subdialog="true"] radio label {
-	  -moz-margin-start: -4px !important;
-	}
 
 	#FontsDialog checkbox image {
 	  min-width: 10px !important;
@@ -552,4 +512,3 @@
   }
 	
 }
-

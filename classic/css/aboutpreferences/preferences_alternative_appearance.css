@@ -131,14 +131,14 @@
 	}
 
 	/* buttons / menulists */
-	button:not(.button-link):not(.close-icon),
+	button:not(.button-link):not(.close-icon):not(#contentBlockingToggle),
 	menulist{
 	  min-height: unset !important;
 	  height: unset !important;
 	  background-image: linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(255,255,255,0.20),rgba(0,0,0,0.01)) !important;
 	}
 	
-	button:not(.button-link):not(.close-icon){
+	button:not(.button-link):not(.close-icon):not(#contentBlockingToggle) {
 	  padding:0px !important;
 	}
 	menulist{
@@ -153,10 +153,10 @@
 	  margin: 0 !important;
 	}
 	
-	checkbox label,
+	/*checkbox label,
 	radio label {
 	  -moz-margin-start: -10px !important;
-	}
+	}*/
 	
 	#homeContentsGroup checkbox label {
 	  -moz-margin-start: 2px !important;
@@ -179,6 +179,10 @@
 		padding-right: 28px !important;
 	  }
 
+	}
+	
+	.sidebar-footer-button .text-link {
+	  margin-inline-start: 0 !important;
 	}
 	
 }
@@ -206,10 +210,10 @@
   margin: 0 !important;
 }
 
-*[subdialog="true"] checkbox label,
+/**[subdialog="true"] checkbox label,
 *[subdialog="true"] radio label {
   -moz-margin-start: -10px !important;
-}
+}*/
 
 *[subdialog="true"] radio *{
   outline: unset !important;

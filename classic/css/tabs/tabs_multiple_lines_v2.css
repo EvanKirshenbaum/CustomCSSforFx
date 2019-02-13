@@ -10,11 +10,14 @@
 /****************************************************************************************/
 
 
+/* NOTE  ********************************************************************************/
+/* Variables are set inside '.\config\' folders CSS files, if complete package is used! */
+
 :root {
   --tabs-lines: 3; /* 3 rows, increase for more */
   --tab_min_width_mlt: 80px;
   --tab_max_width_mlt: 200px;
-  --tab-min-height_mlt: var(--tab-min-height,32px);
+  --tab-min-height_mlt: var(--tab-min-height,32px); /* set own value here, if used without configuration files */
 }
 
 .tabbrowser-tab[fadein]:not([pinned]) {
@@ -30,11 +33,23 @@
 .tabs-newtab-button {
   vertical-align: bottom !important;
   height: var(--tab-min-height_mlt);
+  margin-bottom: -1px !important;
 }
 
 .tab-stack {
   width: 100%;
 }
+
+/* fix tab position */
+#tabbrowser-tabs,
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox {
+  min-height: var(--tab-min-height_mlt) !important;
+}
+:root[uidensity=touch] .tabbrowser-tab:not([pinned]) .tab-content .close-icon {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+/**/
 
 #tabbrowser-tabs .scrollbox-innerbox {
   display: flex;
@@ -81,4 +96,25 @@
 
 #TabsToolbar[currentset^="tabbrowser-tabs,new-tab-button"] #tabbrowser-tabs .scrollbox-innerbox {
   -moz-padding-end: 0px !important;
+}
+
+/* remove crap set by Firefox 58+ */
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+  border-left: unset !important;
+  border-image: unset !important;
+  border-image-slice: unset !important;
+  border: 0 !important;
+}
+
+#TabsToolbar .titlebar-placeholder[type="pre-tabs"],
+#TabsToolbar .titlebar-placeholder[type="post-tabs"]{
+  opacity: 0 !important;
+}
+
+#main-window[tabsintitlebar] #TabsToolbar .private-browsing-indicator,
+#main-window[tabsintitlebar] #TabsToolbar #window-controls,
+#main-window[tabsintitlebar] #TabsToolbar .titlebar-spacer[type="pre-tabs"],
+#main-window[tabsintitlebar] #TabsToolbar .titlebar-spacer[type="post-tabs"] {
+  display: none !important;
 }

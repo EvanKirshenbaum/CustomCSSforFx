@@ -2,6 +2,8 @@
 /* Github: https://github.com/aris-t2/customcssforfx ************************************/
 /****************************************************************************************/
 
+/* NOTE  ********************************************************************************/
+/* Variables are set inside '.\config\' folders CSS files, if complete package is used! */
 
 :root {
   --classic_squared_tabs_tab_height: 26px;
@@ -53,11 +55,6 @@
 
 /* unloaded tab */
 #TabsToolbar:not(:-moz-lwtheme) .tabbrowser-tab[pending] .tab-content {
-  background-image: linear-gradient(to top,transparent,transparent) !important;
-}
-
-/* unread tab */
-#TabsToolbar:not(:-moz-lwtheme) .tabbrowser-tab[unread] .tab-content {
   background-image: linear-gradient(to top,transparent,transparent) !important;
 }
 
@@ -206,7 +203,7 @@
 }
 
 /* size of new tab tabs '+' icon */
-.tabs-newtab-button .toolbarbutton-icon{
+#TabsToolbar .tabs-newtab-button .toolbarbutton-icon{
   min-width: 0px !important;
   min-height: 0px !important;
   width: 14px !important;
@@ -325,6 +322,11 @@
   opacity: 0 !important;
 }
 
+#TabsToolbar .titlebar-spacer[type="pre-tabs"],
+#TabsToolbar .titlebar-spacer[type="post-tabs"] {
+  display: none !important;
+}
+
 /* make sure toolbar buttons do not increase toolbar height */
 #TabsToolbar toolbarbutton .toolbarbutton-badge-stack,
 #TabsToolbar > toolbarpaletteitem,
@@ -347,4 +349,40 @@
 #TabsToolbar toolbarbutton .toolbarbutton-badge-stack .toolbarbutton-icon {
   width: 16px !important;
   height: 16px !important;
+}
+
+#TabsToolbar-customization-target > toolbarpaletteitem toolbarbutton .toolbarbutton-icon,
+#TabsToolbar-customization-target > toolbarbutton .toolbarbutton-icon {
+  padding: unset !important;
+  height: unset !important;
+  width: unset !important;
+}
+
+/* indicator for multiselected tabs */
+.tabbrowser-tab[multiselected="true"] .tab-stack .tab-content {
+  box-shadow:	inset 2px 0 0 Highlight,
+				inset -2px 0 0 Highlight,
+				inset 0 2px 0 Highlight,
+				inset 0 -2px 0 Highlight !important;
+}
+
+/* remove non-required icon pending */
+.tab-icon-pending {
+  display: none !important;
+}
+
+/* Fx65+ fixes */
+#main-window[sizemode="maximized"] #TabsToolbar {
+  margin-top: -1px !important;
+}
+
+#main-window #navigator-toolbox #titlebar #TabsToolbar > .toolbar-items {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+@media (-moz-os-version: windows-win10) {
+  #main-window[sizemode="maximized"] .titlebar-buttonbox-container {
+	-moz-margin-end: -2px !important;
+  }
 }

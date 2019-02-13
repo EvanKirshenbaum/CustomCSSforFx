@@ -3,14 +3,15 @@
 /****************************************************************************************/
 
 
-@import url(./searchbar_popup_engines_show_labels.css);
+@import "./searchbar_popup_engines_show_labels.css";
 
 :root {
-  --search-one-offs_lables_height: 200px;
+  --search-one-offs_labels_height: 200px;
 }
 
 #PopupSearchAutoComplete .search-one-offs  {
-  height: var(--search-one-offs_lables_height) !important;
-  max-height: var(--search-one-offs_lables_height) !important;
+  height: var(--search-one-offs_labels_height) !important;
+  max-height: var(--search-one-offs_labels_height) !important;
   overflow-y: scroll !important;
+  overflow-x: hidden !important;
 }

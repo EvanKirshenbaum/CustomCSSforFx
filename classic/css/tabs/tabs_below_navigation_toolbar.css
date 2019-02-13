@@ -3,11 +3,18 @@
 /****************************************************************************************/
 
 
+/* NOTE  ********************************************************************************/
+/* Variables are set inside '.\config\' folders CSS files, if complete package is used! */
+
 :root {
+  --colored_menubar_background_image: linear-gradient(#f9f9fa,#f9f9fa);
+  --general_toolbar_color_toolbars: linear-gradient(#f9f9fa,#f9f9fa);
+  --general_toolbar_color_navbar: linear-gradient(#f9f9fa,#f9f9fa);
   --tabs_toolbar_color_tabs_not_on_top: linear-gradient(#f9f9fa,#f9f9fa);
   --tabs_toolbar_border-tnot_normal_mode_size: 1px;
   --tabs_toolbar_border-tnot_normal_mode: var(--tabs-border-color);
   --classic_squared_tabs_tab_text_color: black;
+  --classic_squared_tabs_new_tab_icon_color: black;
   --classic_squared_tabs_tab_text_shadow: transparent;
   --tab-min-height_tnot: 32px;
 }
@@ -79,7 +86,7 @@
 }
 
 /* fix for application/hamburger button in titlebar */
-#main-window[tabsintitlebar][sizemode="fullscreen"] #toolbar-menubar[autohide="true"][inactive="true"] ~ #nav-bar  #PanelUI-button {
+#main-window[tabsintitlebar][sizemode="fullscreen"] #toolbar-menubar[autohide="true"][inactive="true"] ~ #nav-bar #PanelUI-button {
   visibility: collapse !important;
 }
 
@@ -122,6 +129,21 @@
 /* toolbar order (end) **************************************/
 
 /* toolbar colors */
+#main-window:not([tabsintitlebar]) #toolbar-menubar:not(:-moz-lwtheme) {
+  background-image: var(--colored_menubar_background_image) !important;
+  border: 0px !important;
+  margin-bottom: -1px !important;
+}
+
+#nav-bar:not(:-moz-lwtheme) {
+  -moz-appearance: none !important;
+  background: var(--general_toolbar_color_navbar, inherit) !important;
+}
+
+toolbar:not(#TabsToolbar):not(#toolbar-menubar):not(#nav-bar):not(:-moz-lwtheme) {
+  -moz-appearance: none !important;
+  background: var(--general_toolbar_color_toolbars, inherit) !important;
+}
 #TabsToolbar:not(:-moz-lwtheme){
   -moz-appearance: none !important;
   background-image: var(--tabs_toolbar_color_tabs_not_on_top) !important;
@@ -138,13 +160,12 @@
   background-image: linear-gradient(var(--toolbar-bgcolor),var(--toolbar-bgcolor)) !important;
 }
 
-
 #main-window:not(:-moz-lwtheme) #TabsToolbar :-moz-any(.tabs-newtab-button,.scrollbutton-up,.scrollbutton-down),
 #main-window:not(:-moz-lwtheme) #TabsToolbar > toolbarbutton,
 #main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-darktext #TabsToolbar :-moz-any(.tabs-newtab-button,.scrollbutton-up,.scrollbutton-down),
 #main-window:not([style*='--lwt-header-image']):-moz-lwtheme:-moz-lwtheme-darktext #TabsToolbar > toolbarbutton {
-  fill: black !important;
-  color: black !important;
+  fill: var(--classic_squared_tabs_new_tab_icon_color) !important;
+  color: var(--classic_squared_tabs_new_tab_icon_color) !important;
 }
 
 /* toolbar borders */
@@ -239,8 +260,8 @@
 }
 
 /* Fx58+ titlebar placeholders */
-#TabsToolbar .titlebar-placeholder[type="pre-tabs"],
-#TabsToolbar .titlebar-placeholder[type="post-tabs"]{
+#TabsToolbar *[type="pre-tabs"],
+#TabsToolbar *[type="post-tabs"] {
   display: none !important;
 }
 
@@ -310,4 +331,21 @@
     }
 
   }
+}
+
+/* Simple Close Tab button */
+#TabsToolbar:not(:-moz-lwtheme) #_fe8cab45-aaee-45f8-8765-781e0ebea300_-browser-action {
+  --webextension-toolbar-image-light: url("moz-extension://7904448c-2319-4f6f-aac9-a1f701258098/icons/Close-dark.svg") !important;
+}
+
+/* close tab button */
+#TabsToolbar:not(:-moz-lwtheme) #closetab_fmarin_com-browser-action {
+  --webextension-toolbar-image-light: url("moz-extension://31006e48-8e00-476f-8ea9-697e40934b02/icons/icon.svg") !important;
+  --webextension-toolbar-image-2x-light: url("moz-extension://31006e48-8e00-476f-8ea9-697e40934b02/icons/icon.svg") !important;
+}
+
+/* close window button */
+#TabsToolbar:not(:-moz-lwtheme) #close-window-button_nanpuyue_com-browser-action {
+  --webextension-toolbar-image-light: url("moz-extension://c914bd13-793f-4a2d-ab66-c655a3d75c52/icons/icon.svg") !important;
+  --webextension-toolbar-image-2x-light: url("moz-extension://c914bd13-793f-4a2d-ab66-c655a3d75c52/icons/icon.svg") !important;
 }

@@ -1,7 +1,7 @@
-## Downloads for Firefox Quantum (57+)
+## Downloads for Firefox Quantum (60+)
 
-**[Classic Theme Restorer / Classic Toolbar Buttons / GlassMyFox CSS tweaks](https://github.com/Aris-t2/CustomCSSforFx/issues/2)**  
-**[NoiaButtons CSS tweaks](https://github.com/Aris-t2/CustomCSSforFx/releases/tag/NoiaButtons)** / **[Custom Scrollbars](https://github.com/Aris-t2/Scrollbars/releases)**  
+**[Releases & changelog](https://github.com/Aris-t2/CustomCSSforFx/releases)** --- **[List of CTR, CTB GMF & Noia4 CSS tweaks](https://github.com/Aris-t2/CustomCSSforFx/issues/2)**  
+**[Custom JavaScript for Firefox](https://github.com/Aris-t2/CustomJSforFx)** --- **[NoiaButtons CSS tweaks](https://github.com/Aris-t2/NoiaButtons)**  
 
 ## Want to support this project?
 
@@ -27,7 +27,6 @@ Keep in mind CSS code can not create entirely new items, buttons or toolbars. It
 **1.** Find your profile folder ('profile names are different for everyone').  
 `about:support > Profile Folder > Open Folder`  
 or `about:profiles > Root Directory > Open Folder`  
-or open command line with `Shift+F2` and enter`folder openprofile`  
 
 **2.** User styles belong into `\chrome\` folder. Create it, if there is none yet. It should look like this afterwards:  
 `\ PROFILE FOLDER NAME \chrome\`  
@@ -44,7 +43,7 @@ or open command line with `Shift+F2` and enter`folder openprofile`
 `C:\Users\ USERNAME \AppData\Roaming\Mozilla\Firefox\Profiles\ PROFILE FOLDER NAME \`  
 Hidden files must be visible to see `AppData` folder. Alternatively open `%APPDATA%\Mozilla\Firefox\Profiles\` from explorers location bar.  
 **Linux**  
-`\home\ USERNAME \.mozilla\firefox\ PROFILE FOLDER NAME \`  
+`/home/ username /.mozilla/firefox/ profile folder name /`  
 Hidden files must be visible to see `.mozilla` folder.  
 **Mac OS X**  
 `~\Library\Mozilla\Firefox\Profiles\ PROFILE FOLDER NAME \` or  
@@ -59,15 +58,17 @@ Restart Firefox after every modification for changes to take effect.
 
 **Example**  
 If "classic button appearance for navigation toolbar buttons" should be <u>enabled</u>, the corresponding line has to look like this:  
-`@import url(./css/buttons/buttons_on_navbar_classic_appearance.css);`  
+`@import "./css/buttons/buttons_on_navbar_classic_appearance.css"; /**/`  
 
 If "classic button appearance for navigation toolbar buttons" should be <u>disabled</u>, the corresponding line has to look like this:  
-`/* @import url(./css/buttons/buttons_on_navbar_classic_appearance.css); */`  
+`/* @import "./css/buttons/buttons_on_navbar_classic_appearance.css"; /**/`  
 
 Note  
 Code between `/*` and `*/` won't be used by Firefox unless there are other `/*` or `*/` inbetween.  
 
 ## How to find item ids and attributes?
+
+Firefox 57-60  
 
 Enable once:  
 1\. Tools > WebDeveloper > Toggle Tools > Toolbox Options > Enable browser chrome and add-on debugging toolboxes  
@@ -79,6 +80,19 @@ Inspect ui or web content.
 
 Force popups to stay open for inspection:  
 Click on 'disable popup auto hide' button (= button with four squares) on developer toolbars end.  
+
+Firefox 61+  
+
+Enable once:  
+1\. Tools > WebDeveloper > Toggle Tools > 'Customize Tools and get help button' (= button with three dots) > Settings > Enable browser chrome and add-on debugging toolboxes  
+2\. Tools > WebDeveloper > Toggle Tools > 'Customize Tools and get help button' (= button with three dots) > Settings > Enable remote debugging  
+
+Hit `Ctrl+Alt+Shift+I` or open 'Tools > WebDeveloper > Browser Toolbox'.  
+
+Inspect ui or web content.  
+
+Force popups to stay open for inspection: 
+Click on 'Customize Tools and get help button' (= button with three dots) and select 'Disable popup auto-hide'.  
 
 ## How to modify custom user styles?
 
@@ -92,11 +106,16 @@ Look for `/* unloaded/pending tabs color *//*`
 Remove `/*` at lines end to make that part of the code active. Save the file and restart Firefox.  
 
 _Example 2_  
-Open `./userChrome.css` file  
-Look for `@import url(./css/locationbar/ac_popup_classic_with_two_lines.css);`  
-Add `/*` at lines start and `*/` at lines end to remove classic popup.  
-Look for `/*@import url(./css/locationbar/ac_popup_url_and_title_50percent_width.css);*/`  
-Remove `/*` at lines start and `*/` at lines end to enable this popup appearance.  
+Open `userChrome.css` file  
+Look for `@import "./css/tabs/classic_squared_tabs.css"; /**/`  
+Add `/*` at lines start to remove classic squared tabs.  
+The result will look like `/* @import "./css/tabs/classic_squared_tabs.css"; /**/`  
+  
+_Example 3_  
+Open `userChrome.css` file    
+Look for `/* @import "./css/locationbar/reader_alternative_icon.css"; /**/`  
+Remove `/*` at lines start to enable this popup appearance.  
+The result will look like `/* @import "./css/locationbar/reader_alternative_icon.css"; /**` 
 
 ## Suggested ui tweaks
 
@@ -201,14 +220,11 @@ _extensions.screenshots.disabled_
 **Container tabs**  
 _privacy.userContext.enabled_  
 
-**Flyweb**  
-_dom.flyweb.enabled_  
-
 **Font rendering**  
 _gfx.canvas.azure.backends_ > direct2d1.1,cairo,skia (old font rendering)  
 _gfx.content.azure.backends_ > direct2d1.1,cairo,skia (old font rendering)  
 
-**Anti fingerprinting (Caution: browser might behave in unforseen ways!)**  
+**Anti fingerprinting (Caution: browser might behave in unforeseen ways!)**  
 _privacy.resistFingerprinting_  
 [Fingerprinting info at Mozilla Wiki tweaks](https://wiki.mozilla.org/Security/Fingerprinting)  
 
