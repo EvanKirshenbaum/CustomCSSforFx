@@ -2,7 +2,9 @@
 /* Github: https://github.com/aris-t2/customcssforfx ************************************/
 /****************************************************************************************/
 
-.searchbar-textbox, #urlbar {
+
+#urlbar,#urlbar-input-container,
+#searchbar, .searchbar-textbox {
   border-radius: 20px !important;
 }
 

@@ -360,3 +360,41 @@ html[data-reactid][data-reactroot] head[data-reactid] + body[data-reactid]{
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
+
+@-moz-document  url-prefix(chrome://mozapps/content/extensions/shortcuts.html) {
+
+	html,
+	body {
+	  background: -moz-Dialog !important;
+	}
+
+	.body {
+	  margin-inline-start: 0px !important;
+	  margin-inline-end: 0px !important;
+	  margin-bottom: 4px !important;
+	  max-width: unset !important;
+	}
+
+	#addon-shortcuts .shortcut.card {
+	  width: unset !important;
+	  padding-top: 0 !important;
+	  padding-bottom: 0 !important;
+	  margin: 1px 0  !important;
+	}
+
+}
+
+@-moz-document  url-prefix(chrome://mozapps/content/extensions/aboutaddons.html) {
+	.main-heading,
+	.main-search {
+	  background: unset !important;
+	  max-width: unset !important;
+	  padding-inline-start: unset !important;
+	  padding-top: unset !important;
+	  padding-bottom: unset !important;
+	}
+	.sticky-container {
+	  background: -moz-Dialog !important;
+	  z-index: 1000 !important;
+	}
+}

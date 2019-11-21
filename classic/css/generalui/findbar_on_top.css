@@ -33,6 +33,7 @@
 :-moz-any(.browserContainer,#viewSource) :-moz-any(findbar,#FindToolbar) {
   -moz-box-ordinal-group: 0;
   position: fixed !important;
+  display:block !important;
   margin-top: -1px !important;
   box-shadow: unset !important;
   border: 1px solid #e1e1e2 !important;
@@ -109,6 +110,11 @@
   color: white !important;
 }
 
+/* support for sidebar */
+#sidebar-box:not([hidden="true"]) + #sidebar-splitter + #appcontent findbar {
+  -moz-margin-start: 230px !important;
+}
+
 /* status at findbars start *//*
 :-moz-any(.browserContainer, #viewSource) :-moz-any(.findbar-find-status,.found-matches) {
   -moz-box-ordinal-group: 0;
@@ -116,3 +122,7 @@
   -moz-margin-end: 6px !important;
 }
 /**/
+
+:-moz-any(.browserContainer,#viewSource) :-moz-any(findbar,#FindToolbar) {
+	z-index: 10000 !important;
+}
