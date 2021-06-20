@@ -2,13 +2,8 @@
 /* Github: https://github.com/aris-t2/customcssforfx ************************************/
 /****************************************************************************************/
 
-
-#main-window[tabsintitlebar] #nav-bar #PanelUI-button {
-  position: relative !important;
-  margin-top: -32px !important;
-  margin-bottom: 40px !important;
-}
-
-#main-window[tabsintitlebar] #nav-bar-customization-target {
-  -moz-margin-start: -37px !important;
-}
+/* make bookmarks fixed size */
+#PersonalToolbar .bookmark-item{
+   width:130px;
+   max-width:130px;
+} 

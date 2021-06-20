@@ -3,6 +3,16 @@
 /****************************************************************************************/
 
 
+#PanelUI-button,
+#PanelUI-menu-button {
+  min-width: 1px !important;
+  width: 1px !important;
+  max-width: 1px !important;
+  opacity: 0.1 !important;
+}
+
+/*
 #PanelUI-button {
   visibility: collapse !important;
 }
+*/

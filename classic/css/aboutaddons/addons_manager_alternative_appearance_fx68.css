@@ -3,14 +3,18 @@
 /****************************************************************************************/
 
 
-@-moz-document  url-prefix(chrome://mozapps/content/extensions/extensions.xul),
-				url-prefix(about:addons) {
+@-moz-document url-prefix(chrome://mozapps/content/extensions/extensions.xul),
+	url-prefix(about:addons),
+	url-prefix(chrome://mozapps/content/extensions/aboutaddons.html),
+	url-prefix(chrome://mozapps/content/extensions/aboutaddons.xhtml) {
 					
 	:root {
 	  --in-content-category-text-hover: HighlightText !important;
 	  --in-content-category-background-hover: Highlight !important;
 	  --in-content-category-text-selected: black !important;
 	  --in-content-category-background-selected: white !important;
+	  --section-width: unset !important;
+	  --main-margin-start: unset !important;
 	}
 	
 	@supports -moz-bool-pref("browser.in-content.dark-mode") {
@@ -39,6 +43,7 @@
 
 	.category {
 	  margin-inline-start: 0px !important;
+	  transition: none !important;
 	}
 	
 	/* dimensions / positioning */
@@ -101,38 +106,45 @@
 	}
 	
 	/* colorize category icons */
+	#categories .category[name="search"],
 	#category-search .category-icon {
 	  fill: #8aa8cc !important;
 	}
-
+	
+	#categories .category[name="discover"],
 	#category-discover .category-icon {
 	  fill: #8b8b8b !important;
 	}
-
+	
+	#categories .category[name="extension"],
 	#category-extension .category-icon {
 	  fill: #63c54f !important;
 	}
-
+	
+	#categories .category[name="theme"],
 	#category-theme .category-icon {
 	  fill: #ffba2f !important;
 	}
 
+	#categories .category[name="plugin"],
 	#category-plugin .category-icon {
 	  fill: #2b63c1 !important;
 	}
-
+	
+	#categories .category[name="dictionary"],
 	#category-dictionary .category-icon {
 	  fill: purple !important;
 	}
-
+	
+	#categories .category[name="legacy"],
 	#category-legacy .category-icon {
 	  fill: red !important;
 	}
-
+	#categories .category[name="available-updates"],
 	#category-availableUpdates .category-icon {
 	  fill: orange !important;
 	}
-
+	#categories .category[name="recent-updates"],
 	#category-recentUpdates .category-icon {
 	  fill: #b99c16 !important;
 	}
@@ -141,6 +153,7 @@
 	  filter: brightness(2.00) !important;
 	}
 	
+	.category[name]:not([selected]):hover,
 	#category-discover:not([selected="true"]):hover .category-icon,
 	#category-theme:not([selected="true"]):hover .category-icon{
 	  filter: brightness(1.5) !important;
@@ -167,7 +180,7 @@
 	}
 
 	#nav-header {
-	  min-height: unset !important;;
+	  min-height: unset !important;
 	}
 	
 	#header-utils-btn {
@@ -206,7 +219,7 @@
 	}
 
 	#header-search {
-	  padding: 0 0px !important;
+	  padding: 0px 0px !important;
 	  min-width: 200px !important;
 	  width: unset !important;
 	}
@@ -234,7 +247,7 @@
 	  padding-bottom: 7px !important;
 	}
 
-	.addon.card {
+	addon-card:not([expanded]) .addon.card {
 	  max-width: unset !important;
 	  padding-inline-end: 0px !important;
 	}
@@ -250,9 +263,7 @@
 
 	.list > .addon,
 	.list > .addon:hover {
-	  outset: unset !important;
 	  box-shadow: unset !important;
-	  duration: unset !important;
 	  border-bottom: 1px solid var(--in-content-box-border-color) !important;
 	}
 
@@ -261,9 +272,7 @@
 	}
 	
 	#detail-view .card {
-	  outset: unset !important;
 	  box-shadow: unset !important;
-	  duration: unset !important;
 	}
 
 	#detail-view .detail-view-container {
@@ -283,11 +292,14 @@
 }
 
 
-@-moz-document  url-prefix(chrome://mozapps/content/extensions/aboutaddons.html) {
+@-moz-document url-prefix(chrome://mozapps/content/extensions/extensions.xul),
+	url-prefix(about:addons),
+	url-prefix(chrome://mozapps/content/extensions/aboutaddons.html),
+	url-prefix(chrome://mozapps/content/extensions/aboutaddons.xhtml) {
 	
-	:root{
+	/*:root{
 	  --in-content-page-background: linear-gradient(to bottom right, #f5f5f5,-moz-Dialog,#f5f5f5,-moz-Dialog) !important;
-	}
+	}*/
 
 	body > div#main {
 	  margin-inline-start: -1px !important;
@@ -297,10 +309,10 @@
 	  box-shadow: unset !important;
 	  border: 0 !important;
 	  border-radius: 0 !important;
-	  background: linear-gradient(to bottom right, #f5f5f5,-moz-Dialog,#f5f5f5,-moz-Dialog) !important;
+	  /*background: linear-gradient(to bottom right, #f5f5f5,-moz-Dialog,#f5f5f5,-moz-Dialog) !important;*/
 	}
 	
-	@supports -moz-bool-pref("browser.in-content.dark-mode") {
+	/*@supports -moz-bool-pref("browser.in-content.dark-mode") {
 	@media (prefers-color-scheme: dark) {
 		
 	  :root{
@@ -311,21 +323,25 @@
 		background: linear-gradient(black,black) !important;
 	  }
 		
-	}}
-
+	}}*/
+	
 	.addon.card {
-	  margin-bottom: 1px !important;
 	  box-shadow: unset !important;
-	  border: 0 !important;
+	  margin-bottom: 1px !important;
 	  border-radius: 0 !important;
 	}
 
+	addon-card:not([expanded]) > .addon.card {
+	  border: 0 !important;
+	}
+	
 	addon-card:not([expanded="true"]) .addon.card:hover {
-	  background: var(--in-content-category-background-hover) !important;
+	  background: Highlight !important;
+	  box-shadow: unset !important;
 	}
 
 	addon-card:not([expanded="true"]) .addon.card:hover .card-contents :-moz-any(div,span,.addon-name-link) {
-	  color: var(--in-content-category-text-hover) !important;
+	  color: HighlightText !important;
 	}
 
 	/* remove headers like 'Enabled'/'Disabled' */
@@ -334,18 +350,18 @@
 	}
 
 	/* reduce opacity for disabled add-ons */
-	section[section="1"] {
-	  color: grey !important;
-	  opacity: 0.6 !important;
-	  filter: greyscale !important; 
-	}
-	
-	/* workaround for Fx 70+ to not have reduced opacity twice */
+	section[section="1"] addon-card:not([expanded]) > .addon.card:not([active="false"]), /* workaround for Fx 68-69*/
 	addon-card:not([expanded]) > .addon.card[active="false"],
 	addon-card:not([expanded])[panelopen] > .addon.card[active="false"],
 	addon-card:not([expanded]) > .addon.card[active="false"]:focus-within,
 	addon-card:not([expanded]) > .addon.card[active="false"]:hover {
-	  opacity: 1 !important;
+	  color: grey !important;
+	  transition: unset !important;
+	}
+	
+	section[section="1"] addon-card:not([expanded]) > .addon.card[active="true"] { /* workaround for Fx 70+*/
+	  color: inherit !important;
+	  opacity: 1.0 !important;
 	  transition: unset !important;
 	}
 
@@ -354,7 +370,6 @@
 	recommended-extensions-section {
 	  display: none !important;
 	}
-	
 	
 	addon-list message-bar-stack.pending-uninstall {
 	  margin-bottom: 0px !important;
@@ -370,10 +385,13 @@
 	
 }
 
-@-moz-document  url-prefix(chrome://mozapps/content/extensions/aboutaddons.html) {
+@-moz-document url-prefix(chrome://mozapps/content/extensions/extensions.xul),
+	url-prefix(about:addons),
+	url-prefix(chrome://mozapps/content/extensions/aboutaddons.html),
+	url-prefix(chrome://mozapps/content/extensions/aboutaddons.xhtml) {
 	.main-heading,
 	.main-search {
-	  background: unset !important;
+	 /* background: unset !important;*/
 	  max-width: unset !important;
 	  padding-inline-start: unset !important;
 	  padding-top: unset !important;
@@ -385,8 +403,12 @@
 	  z-index: 1000 !important;
 	}
 	
+	.main-search {
+	  margin-top: 1px !important;
+	}
+	
 	.main-heading {
-	  margin-top: -30px !important;
+	  margin-top: -26px !important;
 	}
 	
 	.main-heading .header-name,
@@ -401,10 +423,13 @@
 	  font-size: 12px !important;
 	}
 	
+	.main-heading .back-button,
 	.page-options-menu > .more-options-button {
-	  margin: 2px !important;
-	  width: 48px !important;
-	  height: 24px !important;
+	  margin: 3px 0.5px 2px 0.5px !important;
+	  min-width: unset !important;
+	  width: 58px !important;
+	  min-height: unset !important;
+	  height: 22px !important;
 	}
 	
 	addon-page-options panel-list {
@@ -420,5 +445,8 @@
 	  padding: 0 !important;
 	}
 	
+	.card-heading-image {
+	  margin: unset !important;
+	}
 	
 }
