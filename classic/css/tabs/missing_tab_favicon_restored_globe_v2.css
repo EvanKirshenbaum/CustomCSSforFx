@@ -1,6 +1,7 @@
-/* Firefox Quantum userChrome.css tweaks ************************************************/
+/* Firefox userChrome.css tweaks ********************************************************/
 /* Github: https://github.com/aris-t2/customcssforfx ************************************/
 /****************************************************************************************/
+
 
 /* show favicon for tabs without favicons */
 .tabbrowser-tab:not([pinned]) .tab-icon-image:not([src]) {
@@ -22,4 +23,11 @@
   display: none !important;
 }
 
-/**/
+
+.tab-icon-image {
+  opacity: 1 !important;
+}
+.tab-icon-image:not([busy], [src]) {
+  content: url('./../../image/globe.svg') !important;
+  display: inline !important;
+}

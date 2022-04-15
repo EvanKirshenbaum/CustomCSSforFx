@@ -1,4 +1,4 @@
-## Downloads for Firefox Quantum (60+)
+## Downloads for Firefox
 
 **[CustomCSSforFx releases & changelog](https://github.com/Aris-t2/CustomCSSforFx/releases)** - **[Custom JavaScript for Firefox](https://github.com/Aris-t2/CustomJSforFx)** - **[NoiaButtons CSS tweaks](https://github.com/Aris-t2/NoiaButtons)** - **[List of CTR, CTB, GMF & Noia4 CSS tweaks & link to FOXSCAPEuC theme](https://github.com/Aris-t2/CustomCSSforFx/issues/2)** - **[Firefox Color (compatible with default color preset of CustomCSSforFx)](https://color.firefox.com/)**   
 
@@ -18,11 +18,11 @@
 - [Suggested ui tweaks](#suggested-ui-tweaks)  
 - ['about:config' tweaks](#aboutconfig-tweaks)  
 
-## Unlock custom CSS usage in Firefox 69 and newer
+## Unlock custom CSS usage
 
 `about:config` > `toolkit.legacyUserProfileCustomizations.stylesheets` > `true`  
 
-## WebExtensions can not modify Firefox Quantums appearance properly
+## WebExtensions can not modify Firefox appearance properly
 
 The only way to modify ui is adding custom CSS code to **userChrome.css** and **userContent.css** files inside browsers profile folder.  
 Keep in mind CSS code can not create entirely new items, buttons or toolbars. It only can modify already present ui items.  
@@ -122,7 +122,7 @@ Look for `/* @import "./css/locationbar/reader_alternative_icon.css"; /**/`
 Remove `/*` at lines start to enable this popup appearance.  
 The result will look like `/* @import "./css/locationbar/reader_alternative_icon.css"; /**` 
 
-## Suggested ui tweaks
+## Suggested ui tweaks (list might be partly outdated)<a name="suggested-ui-tweaks"></a>
 
 **Toolbar modes (suggestion: compact mode)**  
 _Customize mode > Density > Compact / Normal / Touch_  
@@ -152,7 +152,7 @@ _Install [Awesome RSS](https://addons.mozilla.org/addon/awesome-rss/) WebExtensi
 **Search within "New Tab page" (Fx69+)**  
 _browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar_  
 
-## 'about:config' tweaks
+## 'about:config' tweaks (list might be partly outdated) <a name="aboutconfig-tweaks"></a>
 
 (To revert changes right-click entry and select 'reset')  
 
@@ -259,3 +259,6 @@ _nsITelemetry.canRecordExtended_
 _browser.newtabpage.activity-stream.feeds.telemetry_  
 _browser.newtabpage.activity-stream.telemetry_  
 _extensions.screenshots.upload-disabled_ ("true" to disable)
+
+**Privacy enhancements**  
+arkenfox/user.js: https://github.com/arkenfox/user.js
