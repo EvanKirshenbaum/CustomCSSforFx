@@ -238,7 +238,7 @@
    [!] edit file to set roundness
 */
 
-/* @import "./css/buttons/buttons_on_navbar_button_roundness.css"; /**/
+@import "./css/buttons/buttons_on_navbar_button_roundness.css"; /**/
 
 
 /* -----------------------------
@@ -581,7 +581,7 @@
 */
 
 /* Windows/Linux */
-/* @import "./css/tabs/tabs_below_navigation_toolbar.css"; /**/
+@import "./css/tabs/tabs_below_navigation_toolbar.css"; /**/
 
 /* MacOS */
 /* @import "./css/tabs/tabs_below_navigation_toolbar_macOS.css"; /**/
@@ -708,7 +708,7 @@
    [!] use only, if 'classic squared tabs' are disabled
 */
 
-/* @import "./css/tabs/default_tabs_no_tab_line.css"; /**/
+@import "./css/tabs/default_tabs_no_tab_line.css"; /**/
 /* @import "./css/tabs/default_tabs_tab_line_red_for_unloaded_tabs.css"; /**/
 /* @import "./css/tabs/default_tabs_tab_line_purple_in_private_mode.css"; /**/
 
@@ -745,7 +745,7 @@
    ==========
 */
 
-@import "./css/generalui/private_mode_indicator_hidden.css"; /**/
+/* @import "./css/generalui/private_mode_indicator_hidden.css"; /**/
 @import "./css/generalui/bookmark_icons_colorized.css"; /**/
 /* @import "./css/generalui/bookmarks_smaller_more_bookmarks_icon.css"; /**/
 /* @import "./css/generalui/send_to_device_menuitems_hidden.css"; /**/
@@ -1051,7 +1051,7 @@
    [!] EXPERIMENTAL
 */
 
-/* @import "./css/toolbars/bookmarks_toolbar_multiple_lines.css"; /**/
+@import "./css/toolbars/bookmarks_toolbar_multiple_lines.css"; /**/
 
 
 /* -----------------
