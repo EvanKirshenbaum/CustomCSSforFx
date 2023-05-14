@@ -1,22 +1,26 @@
 ## Downloads for Firefox
 
-**[CustomCSSforFx releases & changelog](https://github.com/Aris-t2/CustomCSSforFx/releases)** - **[Custom JavaScript for Firefox](https://github.com/Aris-t2/CustomJSforFx)** - **[NoiaButtons CSS tweaks](https://github.com/Aris-t2/NoiaButtons)** - **[List of CTR, CTB, GMF & Noia4 CSS tweaks & link to FOXSCAPEuC theme](https://github.com/Aris-t2/CustomCSSforFx/issues/2)** - **[Firefox Color (compatible with default color preset of CustomCSSforFx)](https://color.firefox.com/)**   
+- **[CustomCSSforFx - current release & changelog](https://github.com/Aris-t2/CustomCSSforFx/releases)** - **[Last version with 102 ESR support](https://github.com/Aris-t2/CustomCSSforFx/releases/tag/4.2.8)**  
+- **[Custom JavaScript scripts for Firefox](https://github.com/Aris-t2/CustomJSforFx)** - **[NoiaButtons CSS tweaks](https://github.com/Aris-t2/NoiaButtons)**  
 
 
-## Want to support this project?
+## If you want to support this project, [Paypal Me](https://www.paypal.me/tkpay).
 
-**[[ Paypal Me ]](https://www.paypal.me/tkpay)**  
+
+## License
+
+This project is dual-licensed under the GPLv3 and MPL 2.0, see the terms of the LICENSE files.  
+
 
 ## Instructions / Howto / Readme
 
-- [Unlock custom CSS usage in Firefox 69 and newer](#unlock-custom-css-usage-in-firefox-69-and-newer)
-- [WebExtensions can not modify Firefox Quantums appearance properly](#webextensions-can-not-modify-firefox-quantums-appearance-properly)  
+- [Unlock custom CSS usage](#unlock-custom-css-usage)
+- [WebExtensions can not modify Firefox appearance properly](#webextensions-can-not-modify-firefox-appearance-properly)
 - [Where to find Firefox profile folder? The correct location for user styles.](#where-to-find-firefox-profile-folder-the-correct-location-for-user-styles)  
 - [How to use custom user styles?](#how-to-use-custom-user-styles)  
 - [How to find item ids and attributes?](#how-to-find-item-ids-and-attributes)  
 - [How to modify custom user styles?](#how-to-modify-custom-user-styles)  
-- [Suggested ui tweaks](#suggested-ui-tweaks)  
-- ['about:config' tweaks](#aboutconfig-tweaks)  
+- [Firefox Color (compatible with default color preset of CustomCSSforFx)](https://color.firefox.com/)    
 
 ## Unlock custom CSS usage
 
@@ -73,24 +77,14 @@ Code between `/*` and `*/` won't be used by Firefox unless there are other `/*` 
 
 ## How to find item ids and attributes?
 
-Firefox 57-60  
-
-Enable once:  
-1\. Tools > WebDeveloper > Toggle Tools > Toolbox Options > Enable browser chrome and add-on debugging toolboxes  
-2\. Tools > WebDeveloper > Toggle Tools > Toolbox Options > Enable remote debugging  
-
-Hit `Ctrl+Alt+Shift+I` or open 'Tools > WebDeveloper > Browser Toolbox'.  
-
-Inspect ui or web content.  
-
-Force popups to stay open for inspection:  
-Click on 'disable popup auto hide' button (= button with four squares) on developer toolbars end.  
-
-Firefox 61+  
-
 Enable once:  
 1\. Tools > WebDeveloper > Toggle Tools > 'Customize Tools and get help button' (= button with three dots) > Settings > Enable browser chrome and add-on debugging toolboxes  
 2\. Tools > WebDeveloper > Toggle Tools > 'Customize Tools and get help button' (= button with three dots) > Settings > Enable remote debugging  
+
+or set these two in about:config to true  
+
+about:config > devtools.chrome.enabled > true  
+about:config > devtools.debugger.remote-enabled > true  
 
 Hit `Ctrl+Alt+Shift+I` or open 'Tools > WebDeveloper > Browser Toolbox'.  
 
@@ -113,152 +107,11 @@ Remove `/*` at lines end to make that part of the code active. Save the file and
 _Example 2_  
 Open `userChrome.css` file  
 Look for `@import "./css/tabs/classic_squared_tabs.css"; /**/`  
-Add `/*` at lines start to remove classic squared tabs.  
-The result will look like `/* @import "./css/tabs/classic_squared_tabs.css"; /**/`  
+Add `/*` at lines start to disable 'classic squared tabs' appearance.  
+The result should look like `/* @import "./css/tabs/classic_squared_tabs.css"; /**/`  
   
 _Example 3_  
 Open `userChrome.css` file    
 Look for `/* @import "./css/locationbar/reader_alternative_icon.css"; /**/`  
-Remove `/*` at lines start to enable this popup appearance.  
-The result will look like `/* @import "./css/locationbar/reader_alternative_icon.css"; /**` 
-
-## Suggested ui tweaks (list might be partly outdated)<a name="suggested-ui-tweaks"></a>
-
-**Toolbar modes (suggestion: compact mode)**  
-_Customize mode > Density > Compact / Normal / Touch_  
-
-**Titlebar modes** (suggestion: Firefox titlebar ['application/hamburger button in titlebar' only works in Firefox titlebar])  
-_Customize mode > Title Bar > uncheck checkbox_  
-
-**Drag space above tabs toolbar** (suggestion: disable drag space ['application/hamburger button in titlebar' works best without drag space])  
-_Customize mode > Drag Space > uncheck checkbox_  
-
-**Bookmarks menu button on bookmarks toolbar**  
-_Customize mode > Toolbars > Bookmarks Toolbar_  
-_Customize mode > move 'bookmarks menu' button to bookmark toolbars end_  
-
-**Downloads button always visible**  
-_Customize mode > downloads button > click on button and uncheck 'Auto-hide'_  
-
-**Searchbar** (suggestion: placed after location bar)  
-_Customize mode > Search(bar) > move to navigation toolbar_  
-
-**Flexible spaces** (suggestion: remove spaces after and before location bar)  
-_Customize mode > grab and drag flexible space into palette_  
-
-**RSS icon in location bar**  
-_Install [Awesome RSS](https://addons.mozilla.org/addon/awesome-rss/) WebExtension_  
-
-**Search within "New Tab page" (Fx69+)**  
-_browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar_  
-
-## 'about:config' tweaks (list might be partly outdated) <a name="aboutconfig-tweaks"></a>
-
-(To revert changes right-click entry and select 'reset')  
-
-**Tab audio icon**  
-_browser.tabs.showAudioPlayingIcon_  
-
-**Tab min width** (suggestion: 100)  
-_browser.tabs.tabMinWidth_  
-
-**Insert related tab after current tab** (suggestion: enable / set to 'true')  
-_browser.tabs.insertRelatedAfterCurrent_  
-
-**Hide 'http://' from url** (suggestion: disable / set to 'false')  
-_browser.urlbar.trimURLs_  
-
-**Open links in new tab/window**  
-_browser.link.open_newwindow.restriction_ > 0 (new tab instead window)  
-
-**Preview tabs using 'Ctrl + Tab'**  
-_browser.ctrlTab.previews_  
-
-**Close window with last visible tab** (suggestion: disable / set to 'false')  
-_browser.tabs.closeWindowWithLastTab_  
-
-**Titlebar**  
-_browser.tabs.drawInTitlebar_  
-
-**Old about:newtab and about:home pages (Firefox 57-59 only)**  
-_browser.newtabpage.activity-stream.enabled_  
-_browser.newtabpage.activity-stream.aboutHome.enabled_
-
-**HTML5 fullscreen warning**  
-_full-screen-api.warning.delay_ > 0 or -1 (reduces delay / hides warning)  
-_full-screen-api.warning.timeout_ > 0 (reduces delay)  
-
-**Recently added bookmarks**  
-_browser.bookmarks.showRecentlyBookmarked_  
-
-**General animations**  
-_toolkit.cosmeticAnimations.enabled_  
-
-**Fullscreen animations for HTML5 content**  
-_full-screen-api.transition-duration.enter_ > 0 0 (reduces animation time)  
-_full-screen-api.transition-duration.leave_ > 0 0 (reduces animation time)  
-
-**Add-on manager: remove 'Get Add-ons' category**  
-_extensions.getAddons.showPane_  
-
-**Findbar: animated result highlighting**  
-_findbar.modalHighlight_  
-
-**Searchbar in 'about:preferences'**  
-_browser.preferences.search_  
-
-**Location Bar: search engines at popups bottom**  
-_browser.urlbar.oneOffSearches_  
-
-**Searchbar: open search results in new tab**  
-_browser.search.openintab_  
-
-**Reader mode**  
-_reader.parse-on-load.enabled_  
-
-**Geolocation** (suggestion: disable / set to 'false')  
-_geo.enabled_  
-
-**Pocket** (suggestion: disable / set to 'false')  
-_extensions.pocket.enabled_  
-
-**Screenshots** (suggestion: disable / set to 'true')  
-_extensions.screenshots.disabled_  
-
-**Container tabs**  
-_privacy.userContext.enabled_  
-
-**Password viewer in login forms** (suggestion: disable / set to 'false')  
-_signon.showAutoCompleteFooter_
-
-**Font rendering**  
-_gfx.canvas.azure.backends_ > direct2d1.1,cairo,skia (old font rendering)  
-_gfx.content.azure.backends_ > direct2d1.1,cairo,skia (old font rendering)  
-
-**Anti fingerprinting (Caution: browser might behave in unforeseen ways!)**  
-_privacy.resistFingerprinting_  
-[Fingerprinting info at Mozilla Wiki tweaks](https://wiki.mozilla.org/Security/Fingerprinting)  
-
-**Telemetry / data collection** (suggestion: disable / set to 'false')  
-_browser.ping-centre.telemetry_  
-_toolkit.telemetry.archive.enabled_  
-_toolkit.telemetry.bhrPing.enabled_  
-_toolkit.telemetry.enabled_  
-_toolkit.telemetry.firstShutdownPing.enabled_  
-_toolkit.telemetry.newProfilePing.enabled_  
-_toolkit.telemetry.reportingpolicy.firstRun_  
-_toolkit.telemetry.shutdownPingSender.enabled_  
-_toolkit.telemetry.unified_  
-_toolkit.telemetry.updatePing.enabled_  
-_experiments.enabled_  
-_experiments.activeExperiment_  
-_experiments.supported_  
-_datareporting.healthreport.uploadEnabled_  
-_nsITelemetry.canRecordBase_  
-_nsITelemetry.canRecordExtended_  
-_browser.newtabpage.activity-stream.feeds.telemetry_  
-_browser.newtabpage.activity-stream.telemetry_  
-_extensions.screenshots.upload-disabled_ ("true" to disable)
-
-**Privacy enhancements**  
-arkenfox/user.js: https://github.com/arkenfox/user.js
+Remove `/*` at lines start to enable the alternative reader icon appearance.  
+The result should look like `@import "./css/locationbar/reader_alternative_icon.css"; /**/` 
