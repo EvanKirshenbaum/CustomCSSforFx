@@ -29,7 +29,8 @@
   border-bottom: 1px solid threedshadow !important;
 }
 
-#main-window:not([inDOMFullscreen="true"]) #browser-bottombox {
+#main-window:not([inDOMFullscreen="true"]) #browser,
+#main-window:not([inDOMFullscreen="true"]) #customization-container {
   margin-bottom: var(--tab_below_main_content_bottom_margin) !important;
 }
 
@@ -45,13 +46,12 @@
 }
 
 /* lw-theme support */
-#main-window:not([inDOMFullscreen="true"]) #navigator-toolbox #TabsToolbar:-moz-lwtheme {
+:root[lwtheme] :not([inDOMFullscreen="true"]) #navigator-toolbox #TabsToolbar {
   background-repeat: no-repeat !important;
   background-position: bottom left !important;
   background-color: var(--toolbar-bgcolor) !important;
   background-image: var(--lwt-header-image) !important;
 }
-
 
 /* ##### Caption buttons tweaks: min/max/restore/close ##### */
 
@@ -77,7 +77,7 @@
 	#main-window[tabsintitlebar]:not([inDOMFullscreen="true"]) #toolbar-menubar ~ #TabsToolbar .titlebar-buttonbox-container {
 	  display: none !important;
 	}
-	#main-window[tabsintitlebar]:not([inDOMFullscreen="true"]):-moz-lwtheme #toolbar-menubar ~ #TabsToolbar .titlebar-buttonbox-container {
+	:root[lwtheme] [tabsintitlebar]:not([inDOMFullscreen="true"]) #toolbar-menubar ~ #TabsToolbar .titlebar-buttonbox-container {
 	  display: flex !important;
 	}
   }
@@ -100,8 +100,15 @@
 	}
 }
 
+@media (-moz-platform: macos) {
+	
+#main-window[tabsintitlebar]:not([sizemode="fullscreen"]):not([inDOMFullscreen="true"]) #navigator-toolbox {
+  padding-top: 24px !important;
+}
 
-#main-window:not([inDOMFullscreen="true"]) #browser,
-#main-window:not([inDOMFullscreen="true"]) #customization-container {
-  margin-bottom: var(--tab_below_main_content_toolbar_height) !important; 
+#main-window[tabsintitlebar][sizemode="fullscreen"]:not([inDOMFullscreen="true"]) #titlebar {
+  height: 0 !important;
+  padding-top: 0 !important;
+}
+
 }

@@ -1,8 +1,8 @@
 /*===============================================================================
   Firefox userChrome.css tweaks: main file
   
-  Custom CSS for Firefox 110+
-  Current version: 4.3.6
+  Custom CSS for Firefox 115+
+  Current version: 4.5.4
 
   Based on 'Classic Theme Restorer' & 'Classic Toolbar Buttons' add-ons CSS code 
   Github: https://github.com/aris-t2/customcssforfx
@@ -36,9 +36,6 @@
   ENABLING/DISABLING options:
   To activate an option: remove /* before @import
   To deactivate an option: add /* before @import
-
-  MacOS specific code:
-  Look for 'macOS fix' additions inside this file.
 
   EXPERIMENTAL settings:
   These are for testing purposes only an might get broken by any new browser update.
@@ -88,7 +85,7 @@
     
 	- bookmarks toolbar settings
     - BOOKMARKS TOOLBAR - MULTIPLE LINES
-    - AeroGlass TOOLBARS / WIN10 fix for GLASS8
+    - AeroGlass TOOLBARS / WIN10 fix for GLASS8 (not supported by Firefox 117+)
     - TOOLBAR TEXT MODES
       - icons+text / text only
 	
@@ -493,21 +490,14 @@
    -----------------------------------
    
    [!] only use one option at a time
-   [!] requires 'appbutton_in_titlebar_icon_only.css' to be active
+   [!] requires 'appbutton_in_titlebar_icon_only.css' or 'appbutton_in_titlebar_label_and_icon.css' to be active
 */
 
 /* @import "./css/appbutton/appbutton_in_titlebar_icon_only_dark.css"; /**/
 /* @import "./css/appbutton/appbutton_in_titlebar_icon_only_grey.css"; /**/
 /* @import "./css/appbutton/appbutton_in_titlebar_icon_only_browser_logo.css"; /**/
+/* @import "./css/appbutton/appbutton_in_titlebar_icon_only_nightly.css"; /**/
  
-
-/* -------------------------------------------------------------------------
-   Button in titlebar: MacOS fix - move 'appbutton in titlebar' to the right
-   -------------------------------------------------------------------------
-*/
-
-/* @import "./css/appbutton/appbutton_in_titlebar_macOS_fix.css"; /**/
-
 
 /* -------------------------
    Button in titlebar: color
@@ -533,9 +523,8 @@
    ==============
    
    [!] only use one option at a time
-   [!] custom tab colors are set inside color_variablesXXX.css file(s)
-   [!] curved tabs known from Firefox 29-56 will not be restored by the project
-   [!] If issues on Firefox 107 occur, try to set 'about:config' > 'layout.css.moz-box-flexbox-emulation.enabled' > 'true'.
+   [!] custom tab colors can be set inside color_variablesXXX.css file(s)
+   [!] curved tabs known from Firefox 29-56 will not be added to this project
    
 */
 
@@ -553,6 +542,7 @@
 
 /* Tab appearance based on tabs known from Firefox 57 - 88 */
 /* @import "./css/tabs/default_tabs_photon.css"; /**/
+/* @import "./css/tabs/default_tabs_photon_alt.css"; /**/ /* file from v4.2.7 -no support- */
 
 
 /* ======================================================================================
@@ -560,7 +550,7 @@
    ======================================================================================
    
    [!] only use one option at a time
-   [!] only use BELOW TITLEBAR or BELOW NAVIGATION BAR or BELOW MAIN CONTENT
+   [!] only use BELOW TITLEBAR or BELOW NAVIGATION BAR or BELOW MAIN CONTENT  <<<<< !!!
 */
 
 
@@ -580,11 +570,7 @@
    [!] Note: might require overriding url bars 'selection color' --> see corresponding area
 */
 
-/* Windows/Linux */
 @import "./css/tabs/tabs_below_navigation_toolbar.css"; /**/
-
-/* MacOS */
-/* @import "./css/tabs/tabs_below_navigation_toolbar_macOS.css"; /**/
 
 
 /* Alternative for multi-lined tabs (Glitches might occur with inactive menubar!)
@@ -596,8 +582,6 @@
 /* [!] no menubar when OS titlebar is active */
 /* @import "./css/tabs/tabs_below_navigation_toolbar_alt_force_hidden_menubar.css"; /**/
 
-
-/* @import "./css/tabs/tabs_below_navigation_toolbar_alt_macOS.css"; /**/
 
 /* Move tabs to a higher position 
    [!] not compatible to 'tabs toolbar - multiple tab lines' option
@@ -617,11 +601,7 @@
    [!] not compatible to 'tabs toolbar - multiple tab lines' option
 */
 
-/* Use this when on Windows/Linux */
 /* @import "./css/tabs/tabs_below_main_content.css"; /**/
-
-/* Use this when on MacOS */
-/* @import "./css/tabs/tabs_below_main_content_macOS.css"; /**/
 
 
 /* --------------------------------------------------------------------------------
@@ -648,7 +628,7 @@
    [!] BUG: dragging tabs does not work with multi lined tabs
    [!] not compatible with 'tabs toolbar - below main content' option
    [!] not compatible with 'newtab button always_visible' option
-   [!] only compatible with 'tabs below navigation toolbar alt version'
+   [!] only compatible with 'tabs below navigation toolbar >> alt << version'
 */
 
 /* @import "./css/tabs/tabs_multiple_lines.css"; /**/
@@ -721,6 +701,7 @@
 @import "./css/tabs/tab_icon_colors.css"; /**/
 /* @import "./css/tabs/tab_title_centered.css"; /**/
 /* @import "./css/tabs/tabs_firefox_view_button_hidden.css"; /**/
+/* @import "./css/tabs/classic_squared_tabs_old_bordercolor_for_lwthemes.css"; /**/ /* Has to be used along with 'classic_squared_tabs.css' */
 /* @import "./css/tabs/default_tabs_reduce_spaces.css"; /**/
 /* @import "./css/tabs/tabs_fully_squared.css"; /**/
 /* @import "./css/tabs/tab_audio_icon.css"; /**/
@@ -734,6 +715,7 @@
 /* @import "./css/tabs/tab_maxwidth.css"; /**/
 /* @import "./css/tabs/tab_titles_remove_blur.css"; /**/
 /* @import "./css/tabs/alltabs_button_always_visible.css"; /**/  /* hidden, if multiple tab rows are used */
+/* @import "./css/tabs/alltabs_button_always_hidden.css"; /**/ 
 /* @import "./css/tabs/pinnedtab_empty_favicon_hidden.css"; /**/
 
 /* [!] edit target file to select which items to hide */
@@ -747,6 +729,7 @@
 
 /* @import "./css/generalui/private_mode_indicator_hidden.css"; /**/
 @import "./css/generalui/bookmark_icons_colorized.css"; /**/
+/* @import "./css/generalui/searchbookmarks_hidden.css"; /**/
 /* @import "./css/generalui/bookmarks_smaller_more_bookmarks_icon.css"; /**/
 /* @import "./css/generalui/send_to_device_menuitems_hidden.css"; /**/
 /* @import "./css/generalui/set_as_desktop_background_menuitems_hidden.css"; /**/
@@ -909,7 +892,7 @@
    MENUBARS bookmarks popup
    ------------------------
    
-   [!] not compatible to MacOS or Linux
+   [!] not compatible with macOS or Linux
 */
 
 /* @import "./css/generalui/menubar_bookmarks_popup_bookmark_page_item_hidden.css"; /**/
@@ -938,9 +921,6 @@
 /* @import "./css/toolbars/addonbar_status_in_addonbar.css"; /**/
 /* @import "./css/toolbars/addonbar_fullscreen_autohide.css"; /**/
 
-/* [!] create additional toolbar for 'bookmarks toolbar items' on navigation toolbar */
-/* @import "./css/toolbars/addonbar_extra_bookmarks_toolbar_below_navbar.css"; /**/
-
 
 /* ------------------------
    GENERAL TOOLBAR SETTINGS
@@ -953,11 +933,14 @@
 
    [!] only use one option at a time
    [!] 'top_toolbar_OS_accent_colors.css' failed to work as expected on current Firefox versions and was removed
+   [!] 'top_toolbar_colors_v2.css' mainly for 'tabs below navigation toolbar option'
+   [!] Windows accent colors: about:config > browser.theme.windows.accent-color-in-tabs.enabled > true
 */
 
 
 /* override titlebars and tab toolbars colors */
-/* @import "./css/toolbars/top_toolbar_colors.css"; /**/ 
+/* @import "./css/toolbars/top_toolbar_colors.css"; /**/
+/* @import "./css/toolbars/top_toolbar_colors_v2.css"; /**/ 
 
 
 /* ----------------------
@@ -968,7 +951,6 @@
 @import "./css/toolbars/toolbars_old_padding.css"; /**/
 @import "./css/toolbars/tabs_toolbar_adjustments.css"; /**/
 /* @import "./css/toolbars/tabs_toolbar_remove_background_fog_win7.css"; /**/
-/* @import "./css/toolbars/tabs_toolbar_adjustments_macOS_fix.css"; /**/ /*  MacOS fix */
 
 /* [!] Adjustments for the searchbar placed on menubar */
 @import "./css/toolbars/searchbar_on_menubar_fix.css"; /**/
@@ -1024,9 +1006,10 @@
    ----------------------------------------------------
 
    [!] "Bookmarks Toolbar Items" element has to be moved to navigation toolbar in customizing mode
-   
-   Use above's 'addonbar_extra_bookmarks_toolbar_below_navbar.css' to achieve this.
 */
+
+/* @import "./css/toolbars/additional_bookmarks_toolbar_below_navbar.css"; /**/
+
    
 /* ------------------------------------------
    BOOKMARKS TOOLBAR above navigation toolbar
@@ -1069,13 +1052,14 @@
    
    [!] WIN10 fix for GLASS8
    [!] EXPERIMENTAL
+   [!] not supported by Firefox 117+
 */
 
 /* @import "./css/toolbars/general_toolbar_colors_navigation_toolbar_aeroglass.css"; /**/
 /* @import "./css/toolbars/general_toolbar_colors_bookmarks_toolbar_aeroglass.css"; /**/
 /* @import "./css/toolbars/general_toolbar_colors_tabs_toolbar_aeroglass.css"; /**/
 
-/* Windows 10 fix for Glass8 - Glass8 required for 'Windows 7'-like window transparency */
+/* Windows 10 fix for Glass8 - Glass8 required for 'Windows 7'-like window transparency (not supported by Firefox 117+) */
 /* @import "./css/toolbars/general_toolbar_colors_aeroglass_windows10_glass8.css"; /**/
 
 
@@ -1084,13 +1068,10 @@
    ------------------
    
    [!] only use one option at a time
-   [!] macOS versions also offer alternative appearance on Linux
 */
 
 /* @import "./css/toolbars/toolbar_mode_icons_and_text.css"; /**/
-/* @import "./css/toolbars/toolbar_mode_icons_and_text_macOS.css"; /**/
 /* @import "./css/toolbars/toolbar_mode_text.css"; /**/
-/* @import "./css/toolbars/toolbar_mode_text_macOS.css"; /**/
 
 
 /* ==================================
@@ -1136,6 +1117,7 @@
 /* @import "./css/locationbar/icons_colorized.css"; /**/
 /* @import "./css/locationbar/reader_alternative_icon.css"; /**/
 /* @import "./css/locationbar/popup_blocked_button_hidden.css"; /**/
+/* @import "./css/locationbar/picture_in_picture_button_hidden.css"; /**/
 /* @import "./css/locationbar/zoom_button_hidden.css"; /**/
 /* @import "./css/locationbar/go_button_in_location_bar_hidden.css"; /**/
 /* @import "./css/locationbar/tracking_protection_alternative_icon.css"; /**/

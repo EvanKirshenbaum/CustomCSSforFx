@@ -3,7 +3,7 @@
 /****************************************************************************************/
 
 
-@-moz-document url(about:preferences),url-prefix(about:preferences){
+@-moz-document url(about:preferences),url-prefix(about:preferences),url(about:settings),url-prefix(about:settings) {
 
 	.category {
 	  margin-inline-start: 0px !important;
@@ -29,6 +29,19 @@
 	.groupbox-body,
 	#dialogFrame{
 	  background-color: -moz-Dialog !important;
+	}
+	
+	@media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
+ 	#preferences-stack,.sticky-container,
+	page,
+	.dialogBox .groupbox-title,
+	#dialogFrame,
+	.main-content,
+	.groupbox-body,
+	#dialogFrame {
+	  color: white !important;
+	}
+	
 	}
 	
 	.groupbox-body{
@@ -73,6 +86,13 @@
 
 	#categories .category {
 	  transition-duration: unset !important;
+	}
+	
+	@media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
+
+		#categories .category:not([selected]):not(:hover){
+		  color: white !important;
+		}
 	}
 	
 	/* groupbox */
@@ -127,6 +147,12 @@
 	  margin-inline-start: -20px !important;
 	}
 	
+	@media (-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
+		#mainPrefPane {
+		  color: white !important;
+		}
+	}
+	
 	textbox {
 	  min-height: 24px !important;
 	  height: 24px !important;
@@ -179,8 +205,10 @@
 	}
 	
 	button:not(.button-link):not(.close-icon):not(#contentBlockingToggle) {
-	  padding: 0px !important;
+	  padding-top: 2px !important;
+	  padding-bottom: 2px !important;
 	}
+
 	menulist{
 	  padding:2px !important;
 	}

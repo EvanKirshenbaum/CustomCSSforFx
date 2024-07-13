@@ -7,7 +7,6 @@
 /* cheat main menu button into title bar ********/
 /************************************************/
 
-
 /* tabs toolbar adjustments */
 #main-window[tabsintitlebar] #toolbar-menubar {
   margin-inline-start: 43px !important;
@@ -185,6 +184,7 @@
   border-color: unset !important;
   border: 0 !important;
   box-shadow: unset !important;
+  outline: unset !important;
 }
 
 /* adjust button badge */
@@ -261,6 +261,7 @@
   padding: 0px !important;
   width: 16px !important;
   height: 16px !important;
+  outline: unset !important;
 }
 
 /* fix for toolbar + text mode */
@@ -316,4 +317,21 @@
 panel[id="appMenu-popup"][type="arrow"][side="top"],
 panel[id="appMenu-popup"][type="arrow"][side="bottom"] {
   margin-inline: 0 !important;
+}
+
+/* Force appbutton to the right */
+@media (-moz-platform: macos) {
+	
+#main-window[tabsintitlebar] #PanelUI-button {
+  right: 0 !important;
+}
+
+#main-window[tabsintitlebar] #TabsToolbar {
+  padding-inline-end: 100px !important;
+}
+
+#main-window[tabsintitlebar] .titlebar-buttonbox-container {
+  padding-inline-end: 20px !important;
+}
+
 }

@@ -28,12 +28,17 @@
   margin-block: 0px !important;
 }
 
-.tab-background:is([selected],[multiselected]) {
+:root:not([lwtheme]) .tab-background:is([selected],[multiselected]) {
+  background-image: var(--classic_squared_tabs_active_tab) !important;
+}
+
+:root[lwtheme] .tab-background:is([selected],[multiselected]) {
   background-color: var(--toolbar-bgcolor) !important;
   background-image: var(--toolbar-bgimage) !important;
 }
 
 /* remove left and right tab spaces */
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])),
 #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab[first-visible-unpinned-tab] {
   margin-inline-start: 0px !important;
 }
@@ -74,7 +79,7 @@
   background-color: color-mix(in srgb,Highlight, white 40%) !important;
 }
 
-#main-window:not([lwtheme-image="true"]):not([lwtheme-mozlightdark]):-moz-lwtheme .tabbrowser-tab[selected]:not([usercontextid]) .tab-context-line {
+:root[lwtheme]:not([lwtheme-image="true"]):not([lwtheme-mozlightdark]) .tabbrowser-tab[selected]:not([usercontextid]) .tab-context-line {
   background-color: var(--tab-line-color,Highlight) !important;
 }
 
@@ -84,19 +89,23 @@
 }
 
 /* border between navigation toolbar and tabs toolbar */
-#nav-bar:not(:-moz-lwtheme) {
-  box-shadow: 0 calc(-1 * var(--tabs-navbar-shadow-size)) 0 var(--chrome-content-separator-color) !important;
+:root:not([lwtheme]) #nav-bar {
+  box-shadow: 0 calc(-1 * 1px) 0 color-mix(in srgb, currentColor 20%, transparent) !important;
 }
 
-#nav-bar:-moz-lwtheme {
+:root[lwtheme] #nav-bar {
   box-shadow: unset !important;
 }
 
 /* Tab separators had to be rewritten, because Mozilla removed
-   'beforeselected-visible' and 'before-multiselected' rules. */
-.tabbrowser-tab:not([pinned])::before,
-.tabbrowser-tab:not([pinned]):not([selected],[multiselected]):last-of-type::after,
-#tabbrowser-tabs[movingtab] > #tabbrowser-arrowscrollbox > .tabbrowser-tab:not([pinned])[selected] + .tabbrowser-tab::before {
+   'beforeselected-visible' and 'before-multiselected' rules.
+   
+   Separators show up for pinned tabs, but get hidden by Firefox in overflow mode. 
+   */
+   
+.tabbrowser-tab/*:not([pinned])*/::before,
+.tabbrowser-tab/*:not([pinned])*/:not([selected],[multiselected]):last-of-type::after,
+#tabbrowser-tabs[movingtab] > #tabbrowser-arrowscrollbox > .tabbrowser-tab/*:not([pinned])*/[selected] + .tabbrowser-tab::before {
   border-right: 1px solid transparent;
   margin-block: 5px 4px;
   opacity: 0.3;
@@ -104,33 +113,42 @@
   display: block;
 }
 
-.tabbrowser-tab:not([pinned]):not([selected],[multiselected])::before,
-.tabbrowser-tab:not([pinned]):hover:not([selected])[first-visible-unpinned-tab]::before,
-.tabbrowser-tab:not([pinned]):not([selected],[multiselected]):last-of-type::after,
-#tabbrowser-tabs[movingtab] > #tabbrowser-arrowscrollbox > .tabbrowser-tab:not([pinned])[selected] + .tabbrowser-tab::before {
+.tabbrowser-tab/*:not([pinned])*/:not([selected],[multiselected])::before,
+.tabbrowser-tab/*:not([pinned])*/:hover:not([selected]):nth-child(1 of :not(/*[pinned],*/ [hidden]))::before,
+.tabbrowser-tab/*:not([pinned])*/:hover:not([selected])[first-visible-unpinned-tab]::before,
+.tabbrowser-tab/*:not([pinned])*/:not([selected],[multiselected]):last-of-type::after,
+#tabbrowser-tabs[movingtab] > #tabbrowser-arrowscrollbox > .tabbrowser-tab/*:not([pinned])*/[selected] + .tabbrowser-tab::before {
   border-right: 1px solid var(--lwt-background-tab-separator-color, currentColor);
 }
 
-.tabbrowser-tab:not([pinned]):not([selected])[first-visible-unpinned-tab]::before,
-.tabbrowser-tab:not([pinned])[selected] + .tabbrowser-tab:not([selected])::before,
-.tabbrowser-tab:not([pinned])[multiselected]:not([selected]) + .tabbrowser-tab:not([selected])::before {
+.tabbrowser-tab/*:not([pinned])*/:not([selected]):nth-child(1 of :not(/*[pinned],*/ [hidden]))::before,
+.tabbrowser-tab/*:not([pinned])*/:not([selected])[first-visible-unpinned-tab]::before,
+.tabbrowser-tab/*:not([pinned])*/[selected] + .tabbrowser-tab:not([selected])::before,
+.tabbrowser-tab/*:not([pinned])*/[multiselected]:not([selected]) + .tabbrowser-tab:not([selected])::before {
   border-right: 1px solid transparent;
 }
 
-.tabbrowser-tab:not([pinned]):not([selected],[multiselected]):last-of-type::after {
+.tabbrowser-tab/*:not([pinned])*/:not([selected],[multiselected]):last-of-type::after {
   margin-inline-end: -1px;
 }
 
-.tabbrowser-tab:not([pinned]):hover:not([selected],[multiselected])::before,
-.tabbrowser-tab:not([pinned]):hover:not([selected],[multiselected]):last-of-type::after,
-.tabbrowser-tab:not([pinned]):hover:not([selected])[first-visible-unpinned-tab]::before,
-.tabbrowser-tab:not([pinned]):hover + .tabbrowser-tab:not([pinned]):not([selected],[multiselected])::before {
+.tabbrowser-tab/*:not([pinned])*/:hover:not([selected],[multiselected])::before,
+.tabbrowser-tab/*:not([pinned])*/:hover:not([selected],[multiselected]):last-of-type::after,
+.tabbrowser-tab/*:not([pinned])*/:hover:not([selected]):nth-child(1 of :not(/*[pinned],*/ [hidden]))::before,
+.tabbrowser-tab/*:not([pinned])*/:hover:not([selected])[first-visible-unpinned-tab]::before,
+.tabbrowser-tab/*:not([pinned])*/:hover + .tabbrowser-tab/*:not([pinned])*/:not([selected],[multiselected])::before {
   margin-top: 0;
   margin-bottom: 0;
 }
 
+#tabbrowser-tabs[overflow] .tabbrowser-tab[pinned]::after,
+#tabbrowser-tabs[overflow] .tabbrowser-tab[pinned]::before {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
 /* selected / multiselected colors */
-.tabbrowser-tab:is([selected],[multiselected]) > .tab-stack > .tab-background:not(:-moz-lwtheme) {
+:root:not([lwtheme]) .tabbrowser-tab:is([selected],[multiselected]) > .tab-stack > .tab-background {
   box-shadow: 0 0 1px rgba(0,0,0,.5) !important;
 }
 
@@ -139,8 +157,8 @@
 			  inset 1px 0 0 0 var(--chrome-content-separator-color) !important;
 }
 
-.tab-background:is([selected],[multiselected]):-moz-lwtheme,
-.tab-background:is([selected],[multiselected]):-moz-lwtheme {
+:root[lwtheme] .tab-background:is([selected],[multiselected]),
+:root[lwtheme] .tab-background:is([selected],[multiselected]){
   box-shadow: inset -1px 0 0 0 rgba(255,255,255,.01),
 			  inset 1px 0 0 0 rgba(255,255,255,.01) !important;
 }
@@ -169,8 +187,8 @@
 }
 
 /* Fx 100+ outline fix */
-#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon:-moz-lwtheme,
-.tab-background[selected]:-moz-lwtheme {
+:root[lwtheme] #TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon,
+:root[lwtheme] .tab-background[selected] {
   outline: unset !important;
 }
 
@@ -180,30 +198,6 @@
 	#main-window[sizemode="maximized"][tabsintitlebar] #titlebar {
 	  margin-top: -3px !important;
 	}
-}
-
-/* Fx 105+ - remove Firefox-view-button from tabs toolbar */
-:root:not([privatebrowsingmode=temporary]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs,
-:root[privatebrowsingmode=temporary] :is(toolbarbutton:not(#firefox-view-button), toolbarpaletteitem:not(#wrapper-firefox-view-button)) + #tabbrowser-tabs {
-  border-inline-start: 0px solid color-mix(in srgb, currentColor 25%, transparent) !important;
-}
-
-:root:not([privatebrowsingmode=temporary]):not([firefoxviewhidden]) :is(#firefox-view-button, #wrapper-firefox-view-button) + #tabbrowser-tabs:not([overflow="true"]) {
-  padding-inline-start: 0 !important;
-  margin-inline-start: 0 !important;
-}
-
-#main-window:not([customizing]) #TabsToolbar #firefox-view-button {
-  display: none !important;
-}
-
-#main-window[customizing] #TabsToolbar #firefox-view-button {
-  list-style-image: url("chrome://branding/content/about-logo.png") !important;
-}
-
-#main-window[customizing] #TabsToolbar #firefox-view-button image {
-  width: 16px !important;
-  height: 16px !important;
 }
 
 /* Fx 106+ */
@@ -217,12 +211,12 @@
 }
 
 /* fix jumping pinned tabs / tabs box */
-#TabsToolbar #tabbrowser-tabs[overflow="true"] .tabbrowser-tab[pinned] {
+#TabsToolbar #tabbrowser-tabs[overflow] .tabbrowser-tab[pinned] {
   min-height: calc( var(--tab-min-height) - 2px ) !important;
   max-height: calc( var(--tab-min-height) - 2px ) !important;
 }
 
-#tabbrowser-tabs[overflow="true"] .tabbrowser-tab[pinned] :is(.tab-background,.tab-stack) {
+#tabbrowser-tabs[overflow] .tabbrowser-tab[pinned] :is(.tab-background,.tab-stack) {
   min-height: calc( var(--tab-min-height) - 0px ) !important;
 }
 
@@ -242,4 +236,16 @@
   display: none !important;
 }
 
-/**/
+#main-window:-moz-window-inactive #titlebar {
+  opacity: 1.0 !important;
+}
+
+/* Fx 126+ */
+:root[lwtheme] #nav-bar {
+  border-top: 0px !important;
+}
+
+:root {
+  --tab-selected-bgcolor: unset !important;
+}
+

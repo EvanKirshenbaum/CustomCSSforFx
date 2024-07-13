@@ -3,6 +3,7 @@
 /****************************************************************************************/
 
 
-#TabsToolbar .titlebar-placeholder[type="caption-buttons"] {
-  -moz-margin-start: 20px !important;
+/* hide picture in picture button when videos a playing */
+#urlbar-container #picture-in-picture-button {
+  visibility: collapse !important;
 }

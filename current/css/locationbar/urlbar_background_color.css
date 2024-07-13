@@ -14,31 +14,28 @@
   --urlbar_text_color: black;
 }
 
-#urlbar-search-mode-indicator,
-#page-action-buttons,
-#identity-icon-box,
-#urlbar-background,
-#searchbar {
+
+#main-window:not([privatebrowsingmode]) :is(#urlbar-search-mode-indicator,#page-action-buttons,#identity-icon-box,#urlbar-background,#searchbar) {
   background-color: var(--urlbar_background_color) !important;
 }
 
-#searchbar:-moz-lwtheme,
-#urlbar:-moz-lwtheme #urlbar-input,
-#urlbar:-moz-lwtheme #urlbar-scheme,
-#urlbar:-moz-lwtheme #page-action-buttons,
-#urlbar:-moz-lwtheme #identity-icon-box,
-#urlbar:-moz-lwtheme #urlbar-input-container,
-#urlbar:-moz-lwtheme #urlbar-background,
-#urlbar:-moz-lwtheme .urlbarView,
-#urlbar:-moz-lwtheme:-moz-lwtheme-darktext .urlbarView-row:not([type=tip], [type=dynamic])[selected] > .urlbarView-row-inner,
-#urlbar:-moz-lwtheme:-moz-lwtheme-darktext .urlbarView-row-inner[selected] {
+
+:root[lwtheme]:not([privatebrowsingmode]) #searchbar,
+:root[lwtheme]:not([privatebrowsingmode]) #urlbar :is(#urlbar-input,#urlbar-scheme,#page-action-buttons,#identity-icon-box,#urlbar-input-container,.urlbar-input-container,#urlbar-background,.urlbarView),
+:root[lwtheme]:not(:-moz-lwtheme-brighttext):not([privatebrowsingmode]) #urlbar .urlbarView-row:not([type=tip], [type=dynamic])[selected] > .urlbarView-row-inner,
+:root[lwtheme]:not(:-moz-lwtheme-brighttext):not([privatebrowsingmode]) #urlbar .urlbarView-row-inner[selected] {
   color: var(--urlbar_text_color) !important;
   fill: var(--urlbar_text_color) !important;
 }
 
-@media (-moz-content-prefers-color-scheme: light) {
-	#urlbar:-moz-lwtheme .urlbarView-row:not([type=tip], [type=dynamic])[selected] > .urlbarView-row-inner,
-	#urlbar:-moz-lwtheme .urlbarView-row-inner[selected] {
+@media (-moz-content-prefers-color-scheme: light), (prefers-color-scheme: light),
+		(-moz-toolbar-prefers-color-scheme: dark), (prefers-color-scheme: dark) {
+	:root[lwtheme]:not([privatebrowsingmode]) #urlbar .urlbarView-row:not([type=tip], [type=dynamic])[selected] > .urlbarView-row-inner,
+	:root[lwtheme]:not([privatebrowsingmode]) #urlbar .urlbarView-row-inner[selected] {
+	  color: var(--urlbar_text_color) !important;
+	  fill: var(--urlbar_text_color) !important;
+	}
+	#main-window:not([privatebrowsingmode]) :is(#urlbar,#urlbar-search-mode-indicator,#page-action-buttons,#identity-icon-box,#urlbar-background,#searchbar) {
 	  color: var(--urlbar_text_color) !important;
 	  fill: var(--urlbar_text_color) !important;
 	}

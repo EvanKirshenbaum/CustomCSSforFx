@@ -17,50 +17,40 @@
   width: 16px !important;
   height: 16px !important;
 }
+
 :is(.browserContainer, #viewSource) .findbar-textbox {
   font-size: 14px !important;
 }
 
 :is(.browserContainer,#viewSource) :is(findbar,#FindToolbar) {
-  -moz-box-ordinal-group: 0;  /* can't be replace by box-ordinal-group yet */
   order: -1 !important;
   margin-top: -1px !important;
   box-shadow: unset !important;
   border: 1px solid #e1e1e2 !important;
   border-top: 0px solid transparent !important;
   border-radius: 0 0 3px 3px;
-  transition-property: margin-top, opacity, visibility !important;
-  background-image: unset !important;
+  transition-property: visibility !important;
+  /*background-image: unset !important;*/
 }
 
-#main-window:-moz-lwtheme :is(.browserContainer,#viewSource) :is(findbar,#FindToolbar) {
+:root[lwtheme] :is(.browserContainer,#viewSource) :is(findbar,#FindToolbar) {
   appearance: none !important;
   border: 1px solid var(--tabs-border-color) !important;
   border-top: 0px solid transparent !important;
-}
-
-#main-window:-moz-lwtheme :is(.browserContainer, #viewSource) :is(findbar, #FindToolbar) {
   padding-block: 0 !important;
   border: unset !important;
 }
 
-#main-window:-moz-lwtheme :is(.browserContainer,#viewSource) :is(findbar,#FindToolbar) .findbar-container {
+:root[lwtheme] :is(.browserContainer,#viewSource) :is(findbar,#FindToolbar) .findbar-container {
   appearance: none !important;
-  background-image: linear-gradient(to bottom, var(--toolbar-bgcolor),var(--toolbar-bgcolor)) !important;
-  margin-inline-end: -18px !important;
-  padding-inline-end: 18px !important;
-}
-
-#main-window:-moz-lwtheme :is(.browserContainer,#viewSource) :is(findbar,#FindToolbar) .findbar-container {
-  appearance: none !important;
-  background-image: linear-gradient(to bottom, var(--toolbar-bgcolor),var(--toolbar-bgcolor)) !important;
+  /*background-image: linear-gradient(to bottom, var(--toolbar-bgcolor),var(--toolbar-bgcolor)) !important;*/*/
   margin-inline-end: -26px !important;
   padding-inline-end: 26px !important;
   margin-inline-start: -26px !important;
   padding-inline-start: 26px !important;
 }
 
-#main-window:-moz-lwtheme :is(.browserContainer,#viewSource) :is(findbar,#FindToolbar) .findbar-container hbox[anonid="findbar-textbox-wrapper"] {
+:root[lwtheme] :is(.browserContainer,#viewSource) :is(findbar,#FindToolbar) .findbar-container hbox[anonid="findbar-textbox-wrapper"] {
   padding-inline-start: 8px;
 }
 
@@ -69,21 +59,25 @@
   margin-inline-end: 4px !important;
   font-weight: bold !important;
 }
+
 :is(.browserContainer, #viewSource) .findbar-find-status {
   font-style: italic !important;
 }
-#main-window:not(:-moz-lwtheme-brighttext) :is(.browserContainer, #viewSource) .findbar-find-status {
+
+:root[lwtheme]:not(:-moz-lwtheme-brighttext) :is(.browserContainer, #viewSource) .findbar-find-status {
   color: red !important;
 }
-#main-window:not(:-moz-lwtheme-brighttext) :is(.browserContainer, #viewSource) .found-matches {
+
+:root[lwtheme]:not(:-moz-lwtheme-brighttext) :is(.browserContainer, #viewSource) .found-matches {
   color: green !important;
 }
-#main-window:-moz-lwtheme-brighttext :is(.browserContainer, #viewSource) :is(.findbar-find-status,.found-matches) {
+
+:root[lwtheme]:-moz-lwtheme-brighttext :is(.browserContainer, #viewSource) :is(.findbar-find-status,.found-matches) {
   color: white !important;
 }
 
 @media (-moz-content-prefers-color-scheme: dark) {
-	#main-window:-moz-lwtheme :is(.browserContainer, #viewSource) :is(.findbar-find-status,.found-matches) {
+	:root[lwtheme] :is(.browserContainer, #viewSource) :is(.findbar-find-status,.found-matches) {
 	  color: white !important;
 	}
 }
